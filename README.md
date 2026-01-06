@@ -41,7 +41,7 @@ services.xserver.windowManager.dwm = {
     
     src = ./dotfilles/dwm; # Replace with your actual path
   
-  };
+      };
 
 };
 
