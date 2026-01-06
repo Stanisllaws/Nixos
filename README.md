@@ -46,3 +46,5 @@ services.xserver.windowManager.dwm = {
 };
 
 Last save you: nixos-rebuild switch or other command to rebuild nixos
+
+You can use $ sude nixos-rebuild dry-build  FOR TESTING 
