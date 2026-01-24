@@ -83,7 +83,7 @@ hardware.bluetooth.package = pkgs.bluez;
 services.xserver.windowManager.dwm = {
   enable = true;
   package = pkgs.dwm.overrideAttrs {
-    src = ./dotfilles/dwm; # Replace with your actual path
+    src = ./dotfiles/dwm; # Replace with your actual path
   };
 };
 
@@ -92,7 +92,7 @@ nixpkgs.config.packageOverrides = pkgs: {
   st = pkgs.st.overrideAttrs (oldAttrs:
     let
     in {
-      src = ./dotfilles/st;
+      src = ./dotfiles/st;
       buildInputs = oldAttrs.buildInputs or [] ++ [ pkgs.harfbuzz ];
     });
 };
