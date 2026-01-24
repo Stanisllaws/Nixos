@@ -29,7 +29,7 @@ if you have all the necery files like config.def.h etc. you can continue
  6. Add a this this function to conaiguration.nix and specifide witch directory you put you dwm 
 in this line ex :
 
-src = ./dotfilles/dwm; # Replace with your actual path
+src = ./dotfiles/dwm; # Replace with your actual path
 
 
  #DWM and override
@@ -39,7 +39,7 @@ services.xserver.windowManager.dwm = {
   
   package = pkgs.dwm.overrideAttrs {
     
-    src = ./dotfilles/dwm; # Replace with your actual path
+    src = ./dotfiles/dwm; # Replace with your actual path
   
       };
 
