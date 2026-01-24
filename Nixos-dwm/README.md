@@ -17,11 +17,11 @@
 
  3. Make a folder in /etc/nixos/ directory or where you located you : configuration.nix and flake.nix if you have it.
 If locate in diffrent location in my not work it must be in the same directory like configuration.nix
-ex. /etc/nixos/dotfilles/
+ex. /etc/nixos/dotfiles/
 
  4. Move you dwm configuration for directory you clone the dwm to location that you create in /etc/nixos.
-ex.sudo mv Downloads/dwm  /etc/nixos/dotfilles 
-and ls /etc/nixos/dotfilles/
+ex.sudo mv Downloads/dwm  /etc/nixos/dotfiles 
+and ls /etc/nixos/dotfiles/
 if you have all the necery files like config.def.h etc. you can continue
 
  5. For safty I recomand to copy configuration.nix for exmple $ cp /etc/nixos/configuration.nix ~/configuration.nix_mybackups, so that if you make mistake you can always recplice withe your old config
