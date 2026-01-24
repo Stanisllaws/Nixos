@@ -11,10 +11,6 @@
     # Home Manager (using stable branch)
     home-manager.url = "github:nix-community/home-manager/release-25.05";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
-
-    # Your C program
-   # my-c-program.url = "path:/home/rafal/c-example";
-    # my-c-program.inputs.nixpkgs.follows = "nixpkgs";
   };
 
 
@@ -50,7 +46,6 @@
         # Make both stable and unstable packages available
         specialArgs = {
           inherit pkgs-unstable;
-          # inherit my-c-program;
         };
 
         modules = [
@@ -61,12 +56,6 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-
-            # Pass unstable packages to home-manager too
-            #home-manager.extraSpecialArgs = {
-              # inherit pkgs-unstable;
-          # inherit my-c-program;
-            # };
 
             home-manager.users.rafal = import ./home.nix;
           }
