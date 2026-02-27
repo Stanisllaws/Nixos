@@ -139,6 +139,9 @@ services.desktopManager.cosmic.enable = true;
 virtualisation.virtualbox.host.enable = true;
 virtualisation.virtualbox.host.enableExtensionPack = true;
 users.extraGroups.vboxusers.members = [ "rafal" ];
+#27Feburay2026 KVM/QEMU virtulalization for "VIRT-MANAGER"
+ virtualisation.libvirtd.enable = true;
+  programs.virt-manager.enable = true;
 
 
   # Configure keymap in X11
@@ -246,14 +249,14 @@ variant = "";
   # or through the following service (uncomment if needed):
   # services.kdeconnect.enable = true;
 
-  # Define a user account. Don't forget to set a password with 'passwd'.
+  # Define a user account. Don't forget to set a password with 'passwd'.   
   users.users.rafal = {
     isNormalUser = true;
     description = "rafal";
-    extraGroups = [ "networkmanager" "wheel" ];
+    extraGroups = [ "networkmanager" "wheel""libvirtd" ]; #"libvirtd" for VIRT-MANAGER
     packages = with pkgs; [
       kdePackages.kate
-      #vim
+      
 
 
     #  thunderbird
@@ -274,7 +277,8 @@ variant = "";
   environment.systemPackages = with pkgs; [
     # my-c-program.packages.x86_64-linux.default
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
-       taffybar
+      
+      taffybar
        git # new 17.09
        wget
        dmenu
@@ -289,6 +293,7 @@ variant = "";
 haskellPackages.xmonad-contrib haskell-language-server pkgs.swaybg
    # vim pkgs:
     pkgs.xclip
+    pkgs.virt-manager #KVM and QMU virtual-machine.
     pkgs.neovim
     pkgs.ripgrep #Nvim
     pkgs.fd #Nvim
