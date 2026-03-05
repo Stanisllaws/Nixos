@@ -52,14 +52,14 @@
 (pkgs.writeShellScriptBin "remove-gen" ''
 #!/bin/sh
 
-echo "Remove a range of generations (e.g., generations 1-10)"
-nix-env --delete-generations 1 2 3 4 5 6 7 8 9 10 --profile /nix/var/nix/profiles/system
+echo "Remove a range of generations (e.g., generations 1-10)
+nix-env --delete-generations 1 2 3 4 5 6 7 8 9 10 --profile /nix/var/nix/profiles/system"
 
-echo "Remove a single generation (e.g., generation 5)"
-nix-env --delete-generations 5 --profile /nix/var/nix/profiles/system
+echo "Remove a single generation (e.g., generation 5)
+nix-env --delete-generations 5 --profile /nix/var/nix/profiles/system"
 
-echo "Delete from 7-43"
-nix-env --delete-generations $(seq 7 43) --profile /nix/var/nix/profiles/system
+echo "Delete from 7-43
+nix-env --delete-generations $(seq 7 43) --profile /nix/var/nix/profiles/system"
 
 exec "$SHELL"
 '')
