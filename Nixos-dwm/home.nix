@@ -58,8 +58,8 @@ nix-env --delete-generations 1 2 3 4 5 6 7 8 9 10 --profile /nix/var/nix/profile
 echo "Remove a single generation (e.g., generation 5)
 nix-env --delete-generations 5 --profile /nix/var/nix/profiles/system"
 
-echo "Delete from 7-43
-nix-env --delete-generations $(seq 7 43) --profile /nix/var/nix/profiles/system"
+echo "Delete from 7-43  7 is A  43 is B
+nix-env --delete-generations $(seq A B) --profile /nix/var/nix/profiles/system"
 
 exec "$SHELL"
 '')
