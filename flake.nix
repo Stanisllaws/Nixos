@@ -56,6 +56,10 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
+            home-manager.extraSpecialArgs = {
+              inherit pkgs-unstable;
+
+	    };
 
             home-manager.users.rafal = import ./home.nix;
           }

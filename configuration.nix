@@ -22,17 +22,17 @@ imports =
 # Upadtes for nix channels create 13.09.25r.
 
 
-  system.autoUpgrade = {
-    enable = true;
-    dates = "12:00";
+ # system.autoUpgrade = {
+ #   enable = true;
+ #   dates = "12:00";
    # Proper flake update flags
-    flags = [
-      "--update-input" "nixpkgs"
-      "--update-input" "nixpkgs-unstable"
-      "--update-input" "home-manager"
-      "--commit-lock-file"
-    ];
-  };
+ #   flags = [
+ #     "--update-input" "nixpkgs"
+ #     "--update-input" "nixpkgs-unstable"
+ #     "--update-input" "home-manager"
+ #     "--commit-lock-file"
+ #   ];
+ # };
 
   networking.hostName = "nixos"; # Define your hostname.
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
@@ -65,21 +65,24 @@ imports =
     LC_TIME = "pl_PL.UTF-8";
   };
 
+#################################################
+#Personal PKG
+nixpkgs.overlays = [
+  (self: super: {
+    helloworld = super.callPackage ./HelloWorldPKG {};
+  })
+];
+
+#################################################
+
 hardware.bluetooth.enable = true;
 hardware.bluetooth.package = pkgs.bluez;
-
-
-
-
-
-
-
 
   # Enable the X11 windowing system.
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  #DWM and override
+#DWM and override ###############################
 services.xserver.windowManager.dwm = {
   enable = true;
   package = pkgs.dwm.overrideAttrs {
@@ -87,15 +90,18 @@ services.xserver.windowManager.dwm = {
   };
 };
 
+
 # ST (Simple Terminal) override with custom configuration # MY VERSION
 nixpkgs.config.packageOverrides = pkgs: {
   st = pkgs.st.overrideAttrs (oldAttrs:
     let
     in {
       src = ./dotfiles/st;
-      buildInputs = oldAttrs.buildInputs or [] ++ [ pkgs.harfbuzz ];
+      buildInputs = (oldAttrs.buildInputs or []) ++ [ pkgs.harfbuzz ];
     });
 };
+####################################################
+
 
 services.xserver.windowManager.xmonad.enable = true;
 services.xserver.windowManager.xmonad.enableContribAndExtras = true;
@@ -186,7 +192,7 @@ variant = "";
   };
 
   # Enable sound with pipewire.
- services.pulseaudio.enable = false;
+ hardware.pulseaudio.enable = false;
   security.rtkit.enable = true;
   services.pipewire = {
     enable = true;
@@ -253,7 +259,7 @@ variant = "";
   users.users.rafal = {
     isNormalUser = true;
     description = "rafal";
-    extraGroups = [ "networkmanager" "wheel""libvirtd" ]; #"libvirtd" for VIRT-MANAGER
+    extraGroups = [ "networkmanager" "wheel" "libvirtd" ]; #"libvirtd" for VIRT-MANAGER
     packages = with pkgs; [
       kdePackages.kate
       
@@ -278,15 +284,16 @@ variant = "";
     # my-c-program.packages.x86_64-linux.default
   #  vim # Do not forget to add an editor to edit configuration.nix! The Nano editor is also installed by default.
       
+
+     helloworld #Personal PKG 
+
       taffybar
        git # new 17.09
        wget
        dmenu
         st
       pkgs.gimp
-      # brave
        kitty
-     # chromium
       alacritty
     # hyperland pkgs:
       wofi  waybar hyprpaper xmobar # Xmonad status bar
@@ -301,11 +308,11 @@ haskellPackages.xmonad-contrib haskell-language-server pkgs.swaybg
     pkgs.stylua
     pkgs.lua-language-server
     # IDE
-      pkgs.eclipses.eclipse-cpp pkgs.audacious #MP3 pkgs.picom # x11
+      #pkgs.audacious #MP3 pkgs.picom # x11
       system-config-printer
       pkgs.krusader #krusader
       pkgs.brightnessctl # screen brightness
-      sddm-chili-theme
+      
       pkgs.xsecurelock # screenlock for X11
      #IP and country
       pkgs.ipfetch
@@ -319,20 +326,17 @@ haskellPackages.xmonad-contrib haskell-language-server pkgs.swaybg
           #
           pkgs.mpv # terminal mp3 player
           pkgs.neofetch
-          pkgs.starship
+          pkgs.fastfetch
+	 pkgs.starship
           pkgs.htop
           pkgs.bat
           pkgs.libreoffice-qt6-fresh
-         # pkgs.gccgo15 # GCC-wrapper C COMPUILER
            pkgs.gcc
 	  pkgs.timeshift # serstoring too
           pkgs.nemo #file manager
-          #pkgs.adobe-reader  # adobe-reader 09.11.25
           pkgs.onlyoffice-desktopeditors # office suit
-          pkgs.picom # transparet x11
           pkgs.dropbox
           pkgs.dropbox-cli
-          pkgs.vlc
           pkgs.audacity
           pkgs.unzip
 
@@ -341,17 +345,13 @@ haskellPackages.xmonad-contrib haskell-language-server pkgs.swaybg
           pkgs.xss-lock        # Automatic screen locking
           pkgs.xautolock       # Alternative screen locker
           pkgs.xscreensaver    # Traditional X11 screensaver
-          pkgs.podman
+          #pkgs.podman
           pkgs.rofi
     # UNSTABLE PACKAGES:
-    pkgs-unstable.vscode     # Latest VS Code
     pkgs-unstable.warp-terminal
-    pkgs-unstable.zoom-us
-pkgs-unstable.chromium
+    pkgs-unstable.chromium
     pkgs-unstable.brave
     pkgs-unstable.localsend
-    pkgs-unstable.joplin-desktop # JopLin notatnik z synchronizacją
-    pkgs-unstable.distrobox
 
 ];
 

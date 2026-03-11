@@ -88,11 +88,11 @@ read filen
 
 
 #Bluetooth Start paring 
-  (pkgs.writeShellScriptBin "paird" ''
+ # (pkgs.writeShellScriptBin "paird" ''
     #!/bin/bash
-    bluetoothctl && pair ????????  
-    exec "$SHELL"
-  '')
+#    bluetoothctl && pair ????????  
+ #   exec "$SHELL"
+ # '')
 
   
 
@@ -186,11 +186,11 @@ exec "$SHELL"
  
 
 
-  (pkgs.writeShellScriptBin "sleep" ''
-    #!/bin/bash
-    systemctl suspend
-    exec "$SHELL"
-  '')
+ # (pkgs.writeShellScriptBin "sleepd" ''
+ #   #!/bin/bash
+ #   systemctl suspend
+ #   exec "$SHELL"
+ # '')
  
 
 
