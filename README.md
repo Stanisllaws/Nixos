@@ -163,7 +163,7 @@ int main() {
 
 A minimal example:
 
-```nix
+  nix
 { pkgs ? import <nixpkgs> {} }:
 
 pkgs.stdenv.mkDerivation {
@@ -180,6 +180,6 @@ pkgs.stdenv.mkDerivation {
     cp hello $out/bin/
   '';
 }
-```
->>>>>>> 3697a2f (README)
+
+
 
