@@ -3,13 +3,17 @@
 
   inputs = {
     # Stable channel (25.05)
-    nixpkgs.url = "nixpkgs/nixos-25.05";
+    #nixpkgs.url = "nixpkgs/nixos-25.05";
+    nixpkgs.url = "nixpkgs/nixos-25.11";
+
+
+
 
     # Unstable channel
     nixpkgs-unstable.url = "nixpkgs/nixos-unstable";
 
     # Home Manager (using stable branch)
-    home-manager.url = "github:nix-community/home-manager/release-25.05";
+    home-manager.url = "github:nix-community/home-manager/release-25.11";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
   };
 
@@ -56,10 +60,6 @@
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
-            home-manager.extraSpecialArgs = {
-              inherit pkgs-unstable;
-
-	    };
 
             home-manager.users.rafal = import ./home.nix;
           }
