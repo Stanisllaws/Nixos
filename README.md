@@ -162,6 +162,7 @@ int main() {
 ## Step 3 — Write `default.nix`
 
 A minimal example:
+```
 
   nix
 { pkgs ? import <nixpkgs> {} }:
@@ -181,5 +182,6 @@ pkgs.stdenv.mkDerivation {
   '';
 }
 
+```
 
 
