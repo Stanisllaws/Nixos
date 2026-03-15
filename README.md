@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # ❄️ My NixOS Personal Configuration
 
 This repository documents my personal **NixOS setup**, including custom builds of `dwm`, `st`, shell scripts, and examples of building your own packages.
