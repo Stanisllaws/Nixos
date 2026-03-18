@@ -384,7 +384,7 @@ haskellPackages.xmonad-contrib haskell-language-server pkgs.swaybg
 
 # networking.firewall.allowedICMPTypes = [ ];  # Block all ICMP types, including pingi;
 
-  # Restrict printer ports to Brother MFC-J3930DW only
+  # Restrict printer ports to Brother only
   #networking.firewall.extraCommands = ''
     # Block outbound connections to printer ports except to Brother printer
 
