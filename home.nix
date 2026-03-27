@@ -308,7 +308,14 @@ exec "$SHELL"
 
 (pkgs.writeShellScriptBin "rebuildnix" '' 
     #!/bin/bash
- cd ~/.nixrc && sudo nixos-rebuild switch --flake .#
+sudo nixos-rebuild switch --flake /etc/nixos/
+  exec "$SHELL"
+      
+'')
+
+(pkgs.writeShellScriptBin "rebuildnixtest" '' 
+    #!/bin/bash
+sudo nixos-rebuild dry-activate --flake /etc/nixos/
   exec "$SHELL"
       
 '')
